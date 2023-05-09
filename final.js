@@ -1,6 +1,6 @@
 // let lhs="2023-05-09T10:45:30.000Z";
 // let rhs="2023-05-09T10:45:30.000Z";
-let lhs = 'March 9 2023'
+let lhs = 'March 09 2023'
 
 let rhs='09/03/2023'
 let lhsFinal;
@@ -100,14 +100,13 @@ if (typeLhs === "string") {
                 lhsFinal = lhs
             else if (countHyphenIsTwo(lhs))
                 lhsFinal = lhs
-            else if(containsLetters(lhs)){
-                lhsFinal=formatDate(lhs);
-            }
+            
         }
-        // else if(lhs.length >10){
-        //     console.log('......')
-        //     lhsFinal=formatDate(lhs);
-        // }  
+        
+        else if(lhs.length >10){
+            console.log('......')
+            lhsFinal=formatDate(lhs);
+        }  
     }
 
 }
