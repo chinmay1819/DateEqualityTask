@@ -1,7 +1,8 @@
 // let lhs="2023-05-09T10:45:30.000Z";
 // let rhs="2023-05-09T10:45:30.000Z";
 let lhs = 'March 9 2023'
-let rhs = 'March 9 2023'
+
+let rhs='09/03/2023'
 let lhsFinal;
 let rhsFinal;
 
@@ -9,7 +10,7 @@ let typeLhs = typeof (lhs);
 let typeRhs = typeof (rhs);
 function checkEquality(lhsFinal, rhsFinal) {
 
-    if (lhs === rhs)
+    if (lhsFinal == rhsFinal)
         return true
 
     return false
@@ -72,7 +73,17 @@ function formatDate(str){
     let day=str.getDate();
     let month=str.getMonth()+1;
     let year=str.getFullYear();
-    const formattedDate = `${day}-${month}-${year}`;
+    if(day<10){
+        day=day.toString();
+        day='0'+day
+    }
+    if(month<10){
+        month=month.toString();
+        month='0'+month;
+    }
+    
+    let formattedDate = `${day}/${month}/${year}`;
+    
     // console.log(formattedDate)
     return formattedDate
 }
@@ -89,13 +100,14 @@ if (typeLhs === "string") {
                 lhsFinal = lhs
             else if (countHyphenIsTwo(lhs))
                 lhsFinal = lhs
+            else if(containsLetters(lhs)){
+                lhsFinal=formatDate(lhs);
+            }
         }
-        else if(lhs.length >10){
-            console.log('......')
-            lhsFinal=formatDate(lhs);
-            console.log('-------------------')
-            console.log('lhsFinal :: ',lhsFinal)
-        }  
+        // else if(lhs.length >10){
+        //     console.log('......')
+        //     lhsFinal=formatDate(lhs);
+        // }  
     }
 
 }
@@ -129,8 +141,9 @@ if (typeRhs === "string") {
 if (typeRhs === "number") {
     rhsFinal = convertDateObjectToString(new Date(rhs))
 }
-console.log(lhsFinal);
-console.log(rhsFinal)
+console.log("lhsFinal---::",lhsFinal);
+console.log("rhsFinal---::",rhsFinal)
 
 
 console.log(checkEquality(rhsFinal, lhsFinal));
+
